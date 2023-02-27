@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { GetStaticProps } from 'next'
 import { server } from '@/config/server'
 
@@ -16,7 +17,9 @@ export default function Home({ posts }: Props) {
       <ul>
         {posts.map((post) => (
           <li key={post.id}>
-            <h3>{post.attributes.title}</h3>
+            <h3>
+              <Link href={`/posts/${post.id}`}>{post.attributes.title}</Link>
+            </h3>
             <p>{post.attributes.content}</p>
 
             {/* display and format publishedAt Date */}

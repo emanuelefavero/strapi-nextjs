@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import { GetStaticProps, GetStaticPaths } from 'next'
 
 import { server } from '@/config/server'
@@ -16,6 +17,10 @@ export default function Post({ post }: Props) {
       <Head>
         <title>{post.attributes.title}</title>
       </Head>
+
+      <div>
+        <Link href='/'>Home</Link>
+      </div>
 
       <div className='post'>
         <h1>{post.attributes.title}</h1>
