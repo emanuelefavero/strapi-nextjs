@@ -1,5 +1,4 @@
-import { GetServerSideProps, GetStaticProps, GetStaticPaths } from 'next'
-import { useState, useEffect } from 'react'
+import { GetStaticProps } from 'next'
 import { server } from '@/config/server'
 
 type Post = {
@@ -11,27 +10,8 @@ type Post = {
   }
 }
 
+// * Home (Posts)
 export default function Home({ posts }: { posts: Post[] }) {
-  // const [posts, setPosts] = useState<Post[]>([])
-  // const [loading, setLoading] = useState(true)
-
-  // useEffect(() => {
-  //   const fetchPosts = async () => {
-  //     try {
-  //       const response = await fetch(`${server}/posts`)
-  //       const { data } = await response.json()
-  //       setPosts(data)
-  //       setLoading(false)
-  //       console.log(data)
-  //     } catch (error) {
-  //       console.error('Error fetching posts: ', error)
-  //       setLoading(false)
-  //     }
-  //   }
-
-  //   fetchPosts()
-  // }, [])
-
   return (
     <div className='posts'>
       <h1>Posts</h1>
@@ -60,19 +40,7 @@ export default function Home({ posts }: { posts: Post[] }) {
   )
 }
 
-// fetch posts data with serverSideProps
-// export const getServerSideProps: GetServerSideProps = async () => {
-//   const response = await fetch(`${server}/posts`)
-//   const { data } = await response.json()
-
-//   return {
-//     props: {
-//       posts: data,
-//     },
-//   }
-// }
-
-// fetch posts data with staticProps
+// * fetch posts data with staticProps
 export const getStaticProps: GetStaticProps = async () => {
   const response = await fetch(`${server}/posts`)
   const { data } = await response.json()
@@ -83,3 +51,5 @@ export const getStaticProps: GetStaticProps = async () => {
     },
   }
 }
+
+// TIP: you can always use serverSideProps or useFetch hook to fetch data more dynamically
