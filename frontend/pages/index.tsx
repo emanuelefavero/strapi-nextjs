@@ -1,17 +1,14 @@
 import { GetStaticProps } from 'next'
 import { server } from '@/config/server'
 
-type Post = {
-  id: string
-  attributes: {
-    title: string
-    content: string
-    publishedAt: string
-  }
+import { IPost } from '@/types'
+
+type Props = {
+  posts: IPost[]
 }
 
 // * Home (Posts)
-export default function Home({ posts }: { posts: Post[] }) {
+export default function Home({ posts }: Props) {
   return (
     <div className='posts'>
       <h1>Posts</h1>

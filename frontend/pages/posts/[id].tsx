@@ -3,17 +3,10 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 
 import { server } from '@/config/server'
 
-type Post = {
-  id: string
-  attributes: {
-    title: string
-    content: string
-    publishedAt: string
-  }
-}
+import { IPost } from '@/types'
 
 type Props = {
-  post: Post
+  post: IPost
 }
 
 // * Post
@@ -47,7 +40,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch(`${server}/posts`)
   const { data } = await res.json()
 
-  const paths = data.map((post: Post) => ({
+  const paths = data.map((post: IPost) => ({
     params: { id: post.id.toString() },
   }))
 
