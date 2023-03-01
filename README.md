@@ -27,3 +27,7 @@ This is a starter template for a [Strapi](https://strapi.io) and [Next.js](https
 - [Next.js](https://nextjs.org/)
 - [Jamstack](https://jamstack.org/)
 - [Jamstack wiki](https://en.wikipedia.org/wiki/Jamstack?useskin=vector)
+
+## License
+
+- [MIT](LICENSE.md)
